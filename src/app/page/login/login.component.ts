@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  pseudo=""
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router,private messageService: MessageService) {
     this.loginForm = this.fb.group({
       email: [''],
@@ -28,12 +28,13 @@ export class LoginComponent {
       this.router.navigate(['/home']);
     }).catch((err) => {
       console.log(err);
-    this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Login ou Mot de passe incorrect' });
+      this.messageService.add({ severity: 'error', summary: 'Erreur', detail: 'Login ou Mot de passe incorrect' });
     });
 
   }
 
   goToQuiz() {
+    localStorage.setItem('pseudo', this.pseudo);
     this.router.navigate(['/play']);
   }
 }

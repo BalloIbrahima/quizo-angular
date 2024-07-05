@@ -1,13 +1,80 @@
-.p-card {
-  margin-top: 100px;
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  animation: fadeIn 1s ease-out;
 }
 
-.cardmain{
-  width: 300px;
-  // height: 100vh;
-
+.login-image {
+  flex: 1;
+  padding: 1rem;
 }
 
-.p-field {
-  margin-bottom: 1rem;
+.login-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.login-card {
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.p-field label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.p-inputtext-md {
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+.p-button-md {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+.p-text-center {
+  text-align: center;
+}
+
+.animated-input {
+  transition: all 0.3s ease;
+}
+
+.animated-input:focus {
+  border-color: #007ad9;
+  box-shadow: 0 0 5px rgba(0, 122, 217, 0.5);
+}
+
+.animated-button {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.animated-button:hover {
+  background-color: #005bb5;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

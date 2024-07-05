@@ -1,17 +1,25 @@
-<p-card header="Connexion" class="p-mx-auto p-my-6 cardmain contentMain" >
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="p-field m-2">
-      <label for="email">Email</label>
-      <input id="email" type="text" pInputText formControlName="email" />
-    </div>
-    <div class="p-field m-2">
-      <label for="password">Password</label>
-      <input id="password" type="password" pPassword formControlName="password" />
-    </div>
-    <button pButton type="submit" label="Login" class="p-mt-2 m-2"></button>
-  </form>
-  <h6 class="d-flex m-auto w-100">Ou</h6>
-  <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2" (click)="goToQuiz()"></button>
-</p-card>
+<div class="login-container p-mx-auto p-my-6 mt-4">
+  <div class="login-image">
+    <img src="https://img.freepik.com/free-vector/purple-background-with-quiz-word-colorful-people_52683-126.jpg?t=st=1720200944~exp=1720204544~hmac=340739dde280c1148f8d5e77e1b888ab93559de5350c65d0c16d34c33531fef2&w=740" alt="Login Image" />
+  </div>
+  <p-card header="Connexion" class="login-card">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="p-field p-fluid m-2">
+        <label for="email">Email</label>
+        <input id="email" type="text" pInputText formControlName="email" class="p-inputtext-md animated-input" />
+      </div>
+      <div class="p-field p-fluid m-2">
+        <label for="password">Password</label>
+        <input id="password" type="password" pPassword formControlName="password" class="p-inputtext-md animated-input" />
+      </div>
+      <button pButton type="submit" label="Login" class="p-mt-2 m-2 p-button-md animated-button"></button>
+    </form>
+    <h6 class="d-flex m-auto w-100 p-mt-3 p-text-center">Ou</h6>
+    <form >
+      <input id="pseudo" type="text" class="m-2 col-12" pInputText [(ngModel)]="pseudo" placeholder="Votre Pseudo" />
+      <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2 col-12 " [disabled]="pseudo=='' || pseudo==null" (click)="goToQuiz()"></button>
+    </form>
+  </p-card>
+</div>
 
-<p-toast />
+<p-toast></p-toast>
