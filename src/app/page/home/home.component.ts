@@ -16,7 +16,10 @@ export class HomeComponent implements OnInit {
   newQuestion = '';
   newOptions = ['', '', '', ''];
   correctAnswerIndex = 0;
+  motRecherche=""
   editingQuestion: any = null;
+
+  user:any
 
   constructor(private quizService: QuizService,
     private messageService: MessageService,private authService: AuthService,
@@ -24,11 +27,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadQuestions();
+    this.getUser()
   }
 
   loadQuestions(): void {
     this.quizService.getQuestions().subscribe(data => {
       this.questions = data;
+    });
+  }
+
+  getUser(){
+    this.authService.getUser().subscribe(data => {
+      console.log(data?.email);
+      this.user = data;
     });
   }
 

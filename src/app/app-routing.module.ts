@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { LoginComponent } from './page/login/login.component';
 import { AuthGuard } from './guard/auth/auth.guard';
+import { AuthedGuard } from './guard/authed/authed.guard';
 
 const routes: Routes = [
 
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent,canActivate: [AuthedGuard]  },
   { path: 'play', component:PlayQuizoComponent },
   { path: 'home',component:HomeComponent,canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
