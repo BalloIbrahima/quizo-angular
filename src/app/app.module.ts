@@ -9,6 +9,8 @@ import { QuizoQuestionComponent } from './page/quizo-question/quizo-question.com
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { TabViewModule } from 'primeng/tabview';
+import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
@@ -49,7 +51,9 @@ import { DividerModule } from 'primeng/divider';
     ConfirmPopupModule,
     CardModule,
     PasswordModule,
-    DividerModule
+    DividerModule,
+    TabViewModule,
+    MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
