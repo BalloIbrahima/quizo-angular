@@ -1,0 +1,40 @@
+<!-- src/app/app.component.html -->
+<div class="p-m-3 gap-2">
+  <h1>Quizo App</h1>
+  <button class="m-1" routerLink="/play" pButton type="button" label="Jouer à Quizo"></button>
+  <div class="p-mb-3 gap-2" >
+    <input [(ngModel)]="newQuestion" name="newQuestion" pInputText placeholder="Nouvelle question">
+    <div *ngFor="let option of newOptions; let i = index" class="p-mt-2 m-2">
+      <input type="text" name="newOption{{i}}_input" [(ngModel)]="newOptions[i]" pInputText placeholder="Option {{i + 1}}">
+      <input type="radio" name="correctAnswer" name="newOption{{i}}_isCorrect" [(ngModel)]="correctAnswerIndex" [value]="i"> Correct
+    </div>
+    <button (click)="addQuestion()" pButton type="button" label="Enregistrer la Question"></button>
+    <button *ngIf="editingQuestion" (click)="resetForm()" pButton type="button" label="Anuler La mise aa jour"></button>
+  </div>
+  <p-table [value]="questions" [paginator]="true" [rows]="5" dataKey="name" >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Question</th>
+        <th>Options</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-question>
+      <tr>
+        <td>{{ question.question }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let option of question.options">{{ option }}</li>
+          </ul>
+        </td>
+        <td>
+          <button (click)="editQuestion(question)" class="m-1" icon="pi pi-pencil" pButton type="button" label="Modifier"></button>
+          <button (click)="deleteQuestion(question.id)" class="m-1" icon="pi pi-trash" pButton type="button" label="Supprimer"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-toast />
+

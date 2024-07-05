@@ -1,0 +1,12 @@
+<!-- src/app/quiz-question/quiz-question.component.html -->
+<div *ngIf="question">
+  <h2>{{ question.question }}</h2>
+  <ul>
+    <li *ngFor="let option of question.options; let i = index"
+        (click)="selectOption(i)"
+        [class.selected]="selectedOption === i"
+        appSelectedAnswerDirective="lightblue">
+      {{ option }}
+    </li>
+  </ul>
+</div>

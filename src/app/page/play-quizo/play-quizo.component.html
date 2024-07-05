@@ -1,0 +1,19 @@
+<div *ngIf="questions.length">
+  <app-quizo-question
+    [question]="questions[currentQuestionIndex]"
+    [selectedOption]="selectedOption"
+    (optionSelected)="onOptionSelected($event)">
+  </app-quizo-question>
+  <button (click)="submitAnswer()" pButton type="button" label="Valider la Reponse"></button>
+  <div>Temps Restant: {{ timer }} seconds</div>
+</div>
+<p-toast />
+
+
+<div *ngIf="quizFinished">
+  <h2>Partie Terminee</h2>
+  <p>Votre score est de : {{ score }}</p>
+
+  <button class="m-1" routerLink="" pButton type="button" label="Acceuil"></button>
+
+</div>
