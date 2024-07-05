@@ -4,8 +4,8 @@
   <button class="m-1" routerLink="/play" pButton type="button" label="Jouer à Quizo"></button>
   <div class="p-mb-3 gap-2" >
     <input [(ngModel)]="newQuestion" name="newQuestion" pInputText placeholder="Nouvelle question">
-    <div *ngFor="let option of newOptions; let i = index" class="p-mt-2 m-2">
-      <input type="text" name="newOption{{i}}_input" [(ngModel)]="newOptions[i]" pInputText placeholder="Option {{i + 1}}">
+    <div *ngFor="let option of newOptions; let i = index; trackBy:trackByFn" class="p-mt-2 m-2">
+      <input type="text" name="newOption{{i}}" [(ngModel)]="newOptions[i]" pInputText placeholder="Option {{i + 1}}">
       <input type="radio" name="correctAnswer" name="newOption{{i}}_isCorrect" [(ngModel)]="correctAnswerIndex" [value]="i"> Correct
     </div>
     <button (click)="addQuestion()" pButton type="button" label="Enregistrer la Question"></button>
@@ -29,7 +29,7 @@
         </td>
         <td>
           <button (click)="editQuestion(question)" class="m-1" icon="pi pi-pencil" pButton type="button" label="Modifier"></button>
-          <button (click)="deleteQuestion(question.id)" class="m-1" icon="pi pi-trash" pButton type="button" label="Supprimer"></button>
+          <button (click)="confirm($event,question.id)" class="m-1" icon="pi pi-trash" pButton type="button" label="Supprimer"></button>
         </td>
       </tr>
     </ng-template>
@@ -38,3 +38,12 @@
 
 <p-toast />
 
+
+<p-confirmPopup>
+  <ng-template pTemplate="content" let-message>
+      <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border p-3 mb-3">
+          <i [class]="message.icon" class="text-6xl text-primary-500"></i>
+          <p>{{ message.message }}</p>
+      </div>
+  </ng-template>
+</p-confirmPopup>

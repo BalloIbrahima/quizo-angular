@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { HomeComponent } from './page/home/home.component';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     TableModule,
     InputTextModule,
-    ToastModule
+    ToastModule,
+    ConfirmPopupModule
   ],
   providers: [],
   bootstrap: [AppComponent]

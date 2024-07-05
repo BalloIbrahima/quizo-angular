@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../service/quiz/quiz.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Quiz } from '../../entite/quiz/quiz';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  providers: [MessageService]
+  providers: [ConfirmationService, MessageService]
 
 })
 export class HomeComponent implements OnInit {
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   correctAnswerIndex = 0;
   editingQuestion: any = null;
 
-  constructor(private quizService: QuizService,private messageService: MessageService) {}
+  constructor(private quizService: QuizService,private messageService: MessageService,private confirmationService: ConfirmationService,) {}
 
   ngOnInit(): void {
     this.loadQuestions();
@@ -75,4 +75,29 @@ export class HomeComponent implements OnInit {
     this.correctAnswerIndex = 0;
     this.editingQuestion = null;
   }
+
+  trackByFn(index: any, item: string) {
+    return index;
+  }
+
+  confirm(event: Event,id:string) {
+    this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: 'Veuillez confirmer la suppression, cette action est ireversible .',
+        icon: 'pi pi-exclamation-circle',
+        acceptIcon: 'pi pi-check mr-1',
+        rejectIcon: 'pi pi-times mr-1',
+        acceptLabel: 'Confirm',
+        rejectLabel: 'Cancel',
+        rejectButtonStyleClass: 'p-button-outlined p-button-sm',
+        acceptButtonStyleClass: 'p-button-sm',
+        accept: () => {
+            this.deleteQuestion(id)
+            this.messageService.add({ severity: 'info', summary: 'Confirmer', detail: 'You have accepted', life: 3000 });
+        },
+        reject: () => {
+            this.messageService.add({ severity: 'error', summary: 'Annuler', detail: 'Suppression Annuler', life: 3000 });
+        }
+    });
+}
 }
