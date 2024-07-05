@@ -15,10 +15,10 @@
       <button pButton type="submit" label="Login" class="p-mt-2 m-2 p-button-md animated-button"></button>
     </form>
     <h6 class="d-flex m-auto w-100 p-mt-3 p-text-center">Ou</h6>
-    <form >
-      <input id="pseudo" type="text" class="m-2 col-12" pInputText [(ngModel)]="pseudo" placeholder="Votre Pseudo" />
-      <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2 col-12 " [disabled]="pseudo=='' || pseudo==null" (click)="goToQuiz()"></button>
-    </form>
+    <form>
+      <input id="pseudo" type="text" class="m-2 col-12" pInputText [(ngModel)]="pseudo" placeholder="Votre Pseudo" name="pseudo" />
+      <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2 col-12" [disabled]="!pseudo" (click)="goToQuiz()"></button>
+    </form>
   </p-card>
 </div>
 
