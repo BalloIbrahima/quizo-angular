@@ -1,4 +1,6 @@
-<div *ngIf="questions.length">
+
+<div class="contentMain">
+  <div *ngIf="questions.length && !quizFinished">
   <app-quizo-question
     [question]="questions[currentQuestionIndex]"
     [selectedOption]="selectedOption"
@@ -9,11 +11,13 @@
 </div>
 <p-toast />
 
-
-<div *ngIf="quizFinished">
+<p-divider class="divider" />
+<div *ngIf="quizFinished" class="result">
   <h2>Partie Terminee</h2>
   <p>Votre score est de : {{ score }}</p>
 
   <button class="m-1" routerLink="" pButton type="button" label="Acceuil"></button>
+
+</div>
 
 </div>

@@ -1,6 +1,10 @@
 <!-- src/app/app.component.html -->
-<div class="p-m-3 gap-2">
-  <h1>Quizo App</h1>
+<div class="p-m-3 gap-2  content">
+  <div class="d-flex">
+    <h1>Quizo App</h1>
+    <button class="m-1" (click)="logout()" pButton type="button" label="Se deconecter"></button>
+
+  </div>
   <button class="m-1" routerLink="/play" pButton type="button" label="Jouer à Quizo"></button>
   <div class="p-mb-3 gap-2" >
     <input [(ngModel)]="newQuestion" name="newQuestion" pInputText placeholder="Nouvelle question">
@@ -35,7 +39,6 @@
     </ng-template>
   </p-table>
 </div>
-
 <p-toast />
 
 

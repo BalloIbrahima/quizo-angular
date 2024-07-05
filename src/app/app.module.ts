@@ -7,7 +7,7 @@ import { SelectedAnswerDirectiveDirective } from './directive/selected-answer-di
 import { PlayQuizoComponent } from './page/play-quizo/play-quizo.component';
 import { QuizoQuestionComponent } from './page/quizo-question/quizo-question.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -16,18 +16,29 @@ import { HomeComponent } from './page/home/home.component';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { environment } from '../environments/environment';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LoginComponent } from './page/login/login.component';
+import { CardModule } from 'primeng/card';
+import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
 @NgModule({
   declarations: [
     AppComponent,
     SelectedAnswerDirectiveDirective,
     PlayQuizoComponent,
     QuizoQuestionComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
@@ -35,7 +46,10 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     TableModule,
     InputTextModule,
     ToastModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    CardModule,
+    PasswordModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

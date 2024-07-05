@@ -1,0 +1,16 @@
+<p-card header="Login" class="p-mx-auto p-my-6 cardmain contentMain" >
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="p-field m-2">
+      <label for="email">Email</label>
+      <input id="email" type="text" pInputText formControlName="email" />
+    </div>
+    <div class="p-field m-2">
+      <label for="password">Password</label>
+      <input id="password" type="password" pPassword formControlName="password" />
+    </div>
+    <button pButton type="submit" label="Login" class="p-mt-2 m-2"></button>
+  </form>
+  <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2" (click)="goToQuiz()"></button>
+</p-card>
+
+<p-toast />

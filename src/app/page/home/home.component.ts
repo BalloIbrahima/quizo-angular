@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../service/quiz/quiz.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Quiz } from '../../entite/quiz/quiz';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,9 @@ export class HomeComponent implements OnInit {
   correctAnswerIndex = 0;
   editingQuestion: any = null;
 
-  constructor(private quizService: QuizService,private messageService: MessageService,private confirmationService: ConfirmationService,) {}
+  constructor(private quizService: QuizService,
+    private messageService: MessageService,private authService: AuthService,
+    private confirmationService: ConfirmationService,) {}
 
   ngOnInit(): void {
     this.loadQuestions();
@@ -99,5 +102,10 @@ export class HomeComponent implements OnInit {
             this.messageService.add({ severity: 'error', summary: 'Annuler', detail: 'Suppression Annuler', life: 3000 });
         }
     });
-}
+  }
+
+
+  logout(){
+    this.authService.logout();
+  }
 }
