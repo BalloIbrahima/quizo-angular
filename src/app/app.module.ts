@@ -8,6 +8,7 @@ import { PlayQuizoComponent } from './page/play-quizo/play-quizo.component';
 import { QuizoQuestionComponent } from './page/quizo-question/quizo-question.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabViewModule } from 'primeng/tabview';
 
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -49,7 +50,8 @@ import { DividerModule } from 'primeng/divider';
     ConfirmPopupModule,
     CardModule,
     PasswordModule,
-    DividerModule
+    DividerModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

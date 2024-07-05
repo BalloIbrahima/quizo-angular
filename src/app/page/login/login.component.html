@@ -1,4 +1,4 @@
-<p-card header="Login" class="p-mx-auto p-my-6 cardmain contentMain" >
+<p-card header="Connexion" class="p-mx-auto p-my-6 cardmain contentMain" >
   <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <div class="p-field m-2">
       <label for="email">Email</label>
@@ -10,6 +10,7 @@
     </div>
     <button pButton type="submit" label="Login" class="p-mt-2 m-2"></button>
   </form>
+  <h6 class="d-flex m-auto w-100">Ou</h6>
   <button pButton label="Jouer au quiz" class="p-button-secondary p-mt-2 m-2" (click)="goToQuiz()"></button>
 </p-card>
 
